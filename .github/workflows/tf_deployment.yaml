@@ -8,3 +8,5 @@ jobs:
     steps:
        - name : echo "Hello World"
          run: echo "Hello World" > hello.txt
+       - name: check file existence
+         run: cat hello.txt && ls -lha 
