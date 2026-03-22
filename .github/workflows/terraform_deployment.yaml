@@ -8,18 +8,22 @@ jobs:
   echo_hello_world:
     runs-on: ubuntu-latest
     steps:
-      - name: First step
-        run: |
-          ls -al
-          echo '###############################'
-          pwd
-          echo '###############################'
       - name: Check code
-        uses: actions/checkout@v4.3.1
+        uses: actions/checkout@v4
         
-      - name: Third step
+      - name: debug-step
+        continue-on-error: true
         run: |
-          ls -al
-          echo '###############################'
-          pwd
-          echo '###############################'
+          terraform --version 
+      - uses: hashicorp/setup-terraform@v4
+        with:
+          terraform_version: "1.14.4"
+        
+      - name: terraform-init-plan 
+        run: |
+          export AWS_ACCESS_KEY_ID=${{ secrets.AWS_ACCESS_KEY }}
+          export AWS_SECRET_ACCESS_KEY=${{ secrets.AWS_SECRET_ACCESS }}
+          export AWS_REGION=us-east-1
+          cd terraform
+          terraform init
+          terraform plan
