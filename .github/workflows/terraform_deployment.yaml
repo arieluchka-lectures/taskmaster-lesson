@@ -11,4 +11,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: First step
-        run: echo 'hello world'
+        run: |
+          ls -al
+          echo '###############################'
+          pwd
+          echo '###############################'
+          find /home
