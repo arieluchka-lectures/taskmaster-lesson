@@ -33,6 +33,8 @@ jobs:
           export AWS_SECRET_KEY=${{ secrets.AWS_SECRET_ACCESS }}
           export AWS_REGION=us-east-1
 
+          cd terraform
+
           terraform init
           terraform plan
 
