@@ -1,15 +1,25 @@
-name: WORKFLOW_hello_world
-
-on:
+name: Terraform deployment
+on: 
   push:
-    branches: [main]
+    branches:
+      - main
 
 jobs:
-  quality:
+  echo_hello_world:
     runs-on: ubuntu-latest
     steps:
-        - name: Checkout repo
-          uses: actions/checkout@v4
-
-        - name: Run command
-          run: echo 'hello world'
+      - name: First step
+        run: |
+          ls -al
+          echo '###############################'
+          pwd
+          echo '###############################'
+      - name: Check code
+        uses: actions/checkout@v4.3.1
+        
+      - name: Third step
+        run: |
+          ls -al
+          echo '###############################'
+          pwd
+          echo '###############################'
