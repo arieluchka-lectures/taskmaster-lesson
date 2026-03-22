@@ -1,0 +1,13 @@
+name: Terraform Automation
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  print_hello_world
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print
+        run: echo "Hello World!"
+
