@@ -1,0 +1,15 @@
+name: WORKFLOW_hello_world
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  quality:
+    runs-on: ubuntu-latest
+    steps:
+        - name: Checkout repo
+          uses: actions/checkout@v4
+
+        - name: Run command
+          run: echo 'hello world'
