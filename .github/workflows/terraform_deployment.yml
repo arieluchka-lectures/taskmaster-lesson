@@ -11,3 +11,19 @@ jobs:
       - name: Print
         run: echo "Hello World!"
 
+      - name: First step
+        run: |
+          ls -al
+          echo '###############################'
+          pwd
+          echo '###############################'
+      - name: Check code
+        uses: actions/checkout@v4.3.1
+        
+      - name: Third step
+        run: |
+          ls -al
+          echo '###############################'
+          pwd
+          echo '###############################'
+
