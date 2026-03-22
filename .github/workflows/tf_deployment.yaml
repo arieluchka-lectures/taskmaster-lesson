@@ -6,7 +6,24 @@ jobs:
   build_runner:
     runs-on: ubuntu-latest
     steps:
-       - name : echo "Hello World"
-         run: echo "Hello World" > hello.txt
+       - name: Checkout code
+         uses: actions/checkout@v5
+       - name : grab the code
+         run: git clone https://github.com/100625-Newman/taskmaster-lesson.git
        - name: check file existence
-         run: cat hello.txt && ls -lha 
+         run: ls -lha
+       - name: Install Terraform
+         uses: hashicorp/setup-terraform@v4
+         with:
+           terraform_version: 1.14.7
+       - name: aws cli
+         uses: aws-actions/install-aws-cli@v2
+         with:
+           version: 2.32.32
+       - name: set aws credentials + tf init plan
+         run: |
+           export AWS_ACCESS_KEY_ID=${{ secrets.AWS_ACCESS_KEY_ID }}
+           export AWS_SECRET_ACCESS_KEY=${{ secrets.AWS_SECRET_ACCESS_KEY }}
+           export AWS_DEFAULT_REGION=us-east-1
+           cd taskmaster-lesson     
+           terraform init
