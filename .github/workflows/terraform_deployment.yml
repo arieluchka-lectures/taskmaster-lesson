@@ -24,7 +24,7 @@ jobs:
           terraform_version: "1.14.4"
 
       - name: debug-step-2
-        runs: |
+        run: |
           terrafrom --version
 
 
