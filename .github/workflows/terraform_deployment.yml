@@ -11,19 +11,20 @@ jobs:
       - name: Print
         run: echo "Hello World!"
 
-      - name: First step
-        run: |
-          ls -al
-          echo '###############################'
-          pwd
-          echo '###############################'
       - name: Check code
         uses: actions/checkout@v4.3.1
         
-      - name: Third step
+      - name: debug-step
+        continue-on-error: true
         run: |
-          ls -al
-          echo '###############################'
-          pwd
-          echo '###############################'
+          terraform --version      
+
+      - uses: hashicorp/setup-terraform@v4
+        with:
+          terraform_version: "1.14.4"
+
+      - name: debug-step-2
+        runs: |
+          terrafrom --version
+
 
