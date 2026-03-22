@@ -16,4 +16,13 @@ jobs:
           echo '###############################'
           pwd
           echo '###############################'
-          find /home
+
+      - name: Check code
+        uses: actions/checkout@v4.3.1
+        
+      - name: Third step
+        run: |
+          ls -al
+          echo '###############################'
+          pwd
+          echo '###############################'
