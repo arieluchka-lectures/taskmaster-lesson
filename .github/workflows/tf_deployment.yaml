@@ -17,7 +17,7 @@ jobs:
          with:
            terraform_version: 1.14.7
        - name: aws cli
-         uses: aws-actions/install-aws-cli@v2
+         uses: aws-actions/setup-aws-cli@v2
          with:
            version: 2.32.32
        - name: set aws credentials + tf init plan
