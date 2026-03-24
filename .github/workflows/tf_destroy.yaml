@@ -26,6 +26,9 @@ jobs:
           export AWS_DEFAULT_REGION=us-east-1
       - name: tf destroy
         run: |
+          pwd
           cd taskmaster-lesson/terraform
+          pwd
+          ls -lha
           terraform init
           terraform destroy -auto-approve
