@@ -34,7 +34,7 @@ jobs:
          with:
            name: tf state documentation
            runid: ${{ github.run_id }}
-           path: taskmaster-lesson/terraform/terraform.tfstate       
+           path: taskmaster-lesson/terraform/    
        - name: set aws credentials + tf init plan apply
          run: |
            echo "setting up aws credentials"
