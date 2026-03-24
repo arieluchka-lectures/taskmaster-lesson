@@ -44,7 +44,7 @@ jobs:
 
       - name: env-var
         run: |
-          AWS_ACCESS_KEY_ID=${{ secrets.AWS_ACCESS_KEY }}
+          AWS_ACCESS_KEY_ID='hello world'
           echo '*****************'
           echo $AWS_ACCESS_KEY_ID
 
