@@ -49,7 +49,7 @@ jobs:
            cd terraform
            terraform init
            terraform plan
-            terraform apply -auto-approve
+            terraform apply -auto-approve -replace=aws_internet_gateway.main
 
        - name: upload-artifacts
          uses: actions/upload-artifact@v7
