@@ -20,7 +20,7 @@ jobs:
         with: 
           name: terraform-state
           path: terraform
-          workflow: terraform_deployment.yaml
+          workflow: terraform_destroy.yaml
 
       - name: terraform-init-plan-apply
         run: |
