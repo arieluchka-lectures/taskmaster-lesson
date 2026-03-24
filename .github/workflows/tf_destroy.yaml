@@ -5,6 +5,8 @@ jobs:
   destroy_runner:
     runs-on: ubuntu-latest
     steps:
+      - name: grab the code
+        run: git clone https://github.com/100625-Newman/taskmaster-lesson.git
       - name: Checkout code
         uses: actions/checkout@v5
       - name: Setup Terraform
