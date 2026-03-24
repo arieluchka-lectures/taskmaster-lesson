@@ -3,8 +3,7 @@ name: Terraform Automation
 on:
   push:
     branches: [main]
-  paths:
-    - 'terraform/**'
+    paths: ['terraform/**']
 
 jobs:
   print_hello_world:
