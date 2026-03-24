@@ -5,9 +5,6 @@ on:
     branches:
       - main
 
-env:
-  env1: "banana"
-
 
 jobs:
   echo_hello_world:
@@ -15,52 +12,32 @@ jobs:
     steps:
       - name: Check code
         uses: actions/checkout@v4
-
       # - name: debug-step
       #   continue-on-error: true
       #   run: |
       #     terraform --version 
-
-      # - uses: hashicorp/setup-terraform@v4
-      #   with:
-      #     terraform_version: "1.14.4"
+      - uses: hashicorp/setup-terraform@v4
+        with:
+          terraform_version: "1.14.4"
         
-      # - name: terraform-init-plan 
-      #   run: |
-      #     export AWS_ACCESS_KEY_ID=${{ secrets.AWS_ACCESS_KEY }}
-      #     export AWS_SECRET_ACCESS_KEY=${{ secrets.AWS_SECRET_ACCESS }}
-      #     export AWS_REGION=us-east-1
-      #     # download the TFstate
-      #     cd terraform
-      #     terraform init
-      #     terraform plan
-      #     #terraform apply
-      #     #upload the TFstate
+      - name: terraform-init-plan-apply
+        run: |
+          export AWS_ACCESS_KEY_ID=${{ secrets.AWS_ACCESS_KEY }}
+          export AWS_SECRET_ACCESS_KEY=${{ secrets.AWS_SECRET_ACCESS }}
+          export AWS_REGION=us-east-1
 
-      - name: download-artifact
-        uses: actions/download-artifact@v7
+          cd terraform
+          terraform init
+          terraform plan
+          terraform apply --auto-approve
+
+      - name: upload-artifact
+        uses: actions/upload-artifact@v7
         with: 
           name: terraform-state
+          path: terraform/terraform.tfstate
 
-
-      - name: creating-random-file
-        run: |
-          ls -al
-          pwd
-          cat test.txt
-          
-
-
-      # - name: creating-random-file
-      #   run: |
-      #     cd terraform
-      #     ls -al
-      #     echo 'this is a test!' > test.txt
-      #     ls -al
-      #     pwd
-
-      # - name: upload-artifact
-      #   uses: actions/upload-artifact@v7
+      # - name: download-artifact
+      #   uses: actions/download-artifact@v7
       #   with: 
       #     name: terraform-state
-      #     path: terraform/test.txt
