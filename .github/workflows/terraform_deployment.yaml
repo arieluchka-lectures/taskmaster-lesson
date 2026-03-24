@@ -30,6 +30,7 @@ jobs:
           export AWS_REGION=us-east-1
 
           cd terraform
+          ls -al 
           terraform init
           terraform plan
           terraform apply --auto-approve
