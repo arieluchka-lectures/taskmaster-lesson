@@ -19,7 +19,7 @@ variable "vpc_cidr" {
 variable "subnet_cidr" {
   description = "CIDR block for public subnet"
   type        = string
-  default     = "10.1.0.0/16"
+  default     = "10.1.0.0/24"
 }
 
 variable "instance_type" {
