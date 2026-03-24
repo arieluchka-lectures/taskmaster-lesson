@@ -28,6 +28,7 @@ jobs:
           export AWS_DEFAULT_REGION=us-east-1
       - name: tf destroy
         run: |
+          ls -lha
           pwd
           cd taskmaster-lesson/terraform
           pwd
