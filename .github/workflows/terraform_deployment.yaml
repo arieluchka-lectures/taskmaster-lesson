@@ -5,6 +5,9 @@ on:
     branches:
       - main
 
+env:
+  env1: "banana"
+
 
 jobs:
   echo_hello_world:
@@ -44,7 +47,7 @@ jobs:
 
       - name: env-var
         run: |
-          echo AWS_ACCESS_KEY_ID='hello world' > $GITHUB_ENV
+          echo AWS_ACCESS_KEY_ID='hello world' > $GITHUB_STEP_SUMMARY
           echo '*****************'
           echo $GITHUB_ENV
           echo $AWS_ACCESS_KEY_ID
