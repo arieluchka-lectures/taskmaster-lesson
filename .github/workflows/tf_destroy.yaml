@@ -27,7 +27,7 @@ jobs:
       - name: tf destroy
         run: |
           pwd
-          cd taskmaster-lesson/terraform
+          cd /terraform
           pwd
           ls -lha
           terraform init
