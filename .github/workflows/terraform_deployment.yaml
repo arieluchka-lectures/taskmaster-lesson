@@ -19,11 +19,11 @@ jobs:
         with:
           terraform_version: "1.14.4"
         
-    #   - name: download-artifact
-    #     uses: dawidd6/action-download-artifact@v19
-    #     with: 
-    #       name: terraform-state
-    #       path: terraform
+      - name: download-artifact
+        uses: dawidd6/action-download-artifact@v19
+        with: 
+          name: terraform-state
+          path: terraform
 
       - name: terraform-init-apply
         run: |
