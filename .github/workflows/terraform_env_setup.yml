@@ -3,7 +3,7 @@ name: Terraform Planning
 on:
   pull_request:
     branches: [main]
-    paths: ['terraform/**']
+    # paths: ['terraform/**']
 
 jobs:
   terraform_environment:
