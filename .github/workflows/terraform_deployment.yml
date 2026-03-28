@@ -35,6 +35,7 @@ jobs:
       - name: terraform-apply
         run: |
           cd terraform
+          terraform init
           terraform apply --auto-approve
           
       - name: upload-artifact
