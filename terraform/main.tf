@@ -30,6 +30,9 @@ resource "aws_vpc" "main" {
 resource "aws_internet_gateway" "main" {
   vpc_id = aws_vpc.main.id
 
+lifecycle {
+  replace_triggered_by = [ aws.vpc.main]
+}
   tags = {
     Name = "${var.project_name}-igw"
   }
@@ -48,7 +51,6 @@ resource "aws_subnet" "public" {
 
 resource "aws_route_table" "public" {
   vpc_id = aws_vpc.main.id
-
 
   tags = {
     Name = "${var.project_name}-public-rt"
