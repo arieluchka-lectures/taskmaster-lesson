@@ -12,10 +12,6 @@ jobs:
         uses: actions/checkout@v5
       - name: grab the code
         run: git clone https://github.com/100625-Newman/taskmaster-lesson.git
-      - name: python install
-        run: |
-          sudo apt update
-          sudo apt install python3.12 -y
       - name: python install pip
         run: |
           sudo apt install python3-pip -y
@@ -23,10 +19,11 @@ jobs:
         run: |
           cd taskmaster-lesson
           ls -lha
-          pip install -r taskmaster-lesson/requirements.txt
+          pip install -r taskmaster-lesson/app/requirements.txt
       - name: run tests
         run: |
           cd taskmaster-lesson
-          python3 -m pytest test/test.py
+          ls -lha
+          python3 -m pytest tests/test.py
 
         
