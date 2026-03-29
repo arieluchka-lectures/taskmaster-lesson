@@ -31,8 +31,9 @@ resource "aws_internet_gateway" "main" {
   vpc_id = aws_vpc.main.id
 
 lifecycle {
-  replace_triggered_by = [ aws.vpc.main]
+  replace_triggered_by = [ aws_vpc.main]
 }
+
   tags = {
     Name = "${var.project_name}-igw"
   }
