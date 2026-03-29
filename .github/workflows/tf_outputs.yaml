@@ -1,0 +1,33 @@
+name: Terraform Outputs
+on:
+  workflow_dispatch:
+jobs:
+  outputs_runner:
+    runs-on: ubuntu-latest
+    steps:
+      - name: grab the code
+        run: git clone https://github.com/100625-Newman/taskmaster-lesson.git 
+      - name: Checkout code
+        uses: actions/checkout@v5
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v4
+        with:
+          terraform_version: 1.14.7
+      - name: download-artifacts
+        uses: dawidd6/action-download-artifact@v19
+        with:
+          workflow: tf_deployment.yaml
+          name: tf state documentation
+          path: terraform/
+      - name: set aws credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY }}
+           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS }}
+           aws-region: us-east-1
+      - name: tf output
+        run: |
+          cd terraform
+          terraform init
+          terraform validate
+          terraform output -txt > tf_outputs.txt
