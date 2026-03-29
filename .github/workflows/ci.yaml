@@ -21,9 +21,11 @@ jobs:
           sudo apt install python3-pip -y
       - name: install requirements
         run: |
+          cd taskmaster-lesson
           pip install -r taskmaster-lesson/requirements.txt
       - name: run tests
         run: |
+          cd taskmaster-lesson
           python3 -m pytest test/test.py
 
         
