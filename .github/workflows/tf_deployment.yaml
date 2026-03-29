@@ -41,4 +41,4 @@ jobs:
          uses: actions/upload-artifact@v7
          with:
            name: tf state documentation
-           path: taskmaster-lesson/terraform/terraform.tfstate
+           path: terraform/terraform.tfstate

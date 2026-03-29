@@ -18,7 +18,7 @@ jobs:
         with:
           workflow: tf_deployment.yaml
           name: tf state documentation
-          path: taskmaster-lesson/terraform/   
+          path: terraform/terraform.tfstate
           continue-on-error: true
       - name: set aws credentials
         run: |
