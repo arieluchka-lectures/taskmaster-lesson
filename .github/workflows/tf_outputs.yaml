@@ -4,6 +4,8 @@ on:
 jobs:
   outputs_runner:
     runs-on: ubuntu-latest
+    env:
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     steps:
       - name: grab the code
         run: git clone https://github.com/100625-Newman/taskmaster-lesson.git 
