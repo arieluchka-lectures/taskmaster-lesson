@@ -4,7 +4,8 @@ on:
   pull_request:
     branches:
       - main
-
+    paths:
+      - 'terraform/**'
 
 jobs:
   echo_hello_world:
