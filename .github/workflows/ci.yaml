@@ -1,0 +1,24 @@
+name: ci configuration
+on:
+  pull_request:
+    branches: [ main ]
+    runs-on: ubuntu-latest
+    env:
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    steps:
+       - name: Checkout code
+         uses: actions/checkout@v5
+       - name : grab the code
+         run: git clone https://github.com/100625-Newman/taskmaster-lesson.git
+       - name: python install
+          run: |
+            sudo apt update
+            sudo apt install python3.12-y
+        - name: python install pip
+          run: |
+            sudo apt install python3-pip -y
+        - name: install requirements
+          run: |
+            pip install -r taskmaster-lesson/requirements.txt
+            
+        
