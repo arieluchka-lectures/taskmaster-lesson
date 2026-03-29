@@ -18,7 +18,7 @@ jobs:
         with:
           workflow: tf_deployment.yaml
           name: tf state documentation
-          path: terraform/terraform.tfstate
+          path: terraform/
           continue-on-error: true
       - name: set aws credentials
         run: |
