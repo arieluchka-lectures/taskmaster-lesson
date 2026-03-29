@@ -32,4 +32,8 @@ jobs:
          run: |
            cd taskmaster-lesson/terraform
            terraform init
-           terraform plan
+
+       - name: terraform plan
+         uses: dflook/terraform-plan@v2
+         with:
+           path: taskmaster-lesson/terraform
