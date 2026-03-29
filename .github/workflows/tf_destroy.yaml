@@ -34,4 +34,5 @@ jobs:
           pwd
           ls -lha
           terraform init
+          terraform validate
           terraform destroy -auto-approve
