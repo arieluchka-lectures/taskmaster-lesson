@@ -22,6 +22,7 @@ jobs:
       - name: install requirements
         run: |
           cd taskmaster-lesson
+          ls -lha
           pip install -r taskmaster-lesson/requirements.txt
       - name: run tests
         run: |
