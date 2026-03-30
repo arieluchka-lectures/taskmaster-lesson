@@ -25,6 +25,6 @@ jobs:
         run: |
           cd taskmaster-lesson/tests
           ls -lha
-          pytest /app/app.py
+          pytest taskmaster-lesson/app/app.py
 
         
