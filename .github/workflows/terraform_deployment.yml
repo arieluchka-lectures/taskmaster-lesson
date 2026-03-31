@@ -1,5 +1,4 @@
 name: Terraform deployment
-
 on:
   push:
     branches:
@@ -14,9 +13,13 @@ jobs:
       - name: Check code
         uses: actions/checkout@v4
 
-      - name: first job
+      - name: debug-step
+        continue-on-error: true
         run: |
-          ls -al
-          echo "#######"
-          pwd
-          echo hello maryam
+          terraform --version
+      - uses: hashicorp/setup-terraform@v4
+        with:
+            terraform_version: "1.14.4"
+      - name: gebug_step
+        run: |
+          terraform --version
