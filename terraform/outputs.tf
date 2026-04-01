@@ -30,7 +30,7 @@ output "setup_instructions" {
 
   ============================================
     Set these GitHub repository secrets:
-  ============================================
+  =========================================
 
     EC2_HOST    = ${aws_instance.main.public_ip}
     EC2_USER    = ubuntu
