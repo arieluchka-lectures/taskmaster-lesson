@@ -28,9 +28,9 @@ output "setup_instructions" {
   description = "How to connect terraform outputs to the CD workflow"
   value       = <<-INSTRUCTIONS
 
-  # ============================================
-  #   Set these GitHub repository secrets:
-  # ============================================
+  ============================================
+    Set these GitHub repository secrets:
+  ============================================
 
     EC2_HOST    = ${aws_instance.main.public_ip}
     EC2_USER    = ubuntu
