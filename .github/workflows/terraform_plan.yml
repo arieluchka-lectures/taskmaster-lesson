@@ -1,37 +1,85 @@
 name: Terraform plan
-on:
+
+on: 
+
   pull_request:
+
     branches:
+
       - main
+
     paths:
+
       - 'terraform/**'
+
+permissions:
+
+  pull-requests: write
+
+  
+
 jobs:
-  terraform_plan:
-    name:  Terraform Plan (PR)
+
+  terraform-plan:
+
     runs-on: ubuntu-latest
 
     steps:
-      - name: Check code
-        uses: actions/checkout@v4
+
+      - name: Checkout repo
+
+        uses: actions/checkout@v6
 
       - uses: hashicorp/setup-terraform@v4
-        with:
-            terraform_version: "1.14.4"
-  
-      - name: download-artifact
-        continue-on-error: true
-        uses: dawidd6/action-download-artifact@v19
-        with:
-          name: teraform-state
-          path: terraform
-        
-      - name: terraform-init-plan
-        run: |
-          export AWS_ACCESS_KEY_ID=${{secrets.AWS_ACCESS_KEY_ID}}
-          export AWS_SECRET_ACCESS_KEY=${{secrets.AWS_SECRET_ACCESS_KEY}}
-          export AWS_REGION=us-east-1
-          cd terraform
-          terraform init
-          terraform plan
 
-  
+        with:
+
+          terraform_version: "1.14.4"
+
+      - name: download-artifact
+
+        uses: dawidd6/action-download-artifact@v19
+
+        with: 
+
+          name: terraform-state
+
+          path: terraform
+
+          workflow: terraform_deployment.yml
+
+      
+
+      - name: terraform plan
+
+        uses: dflook/terraform-plan@v2
+
+        env:
+
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY }}
+
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS }}
+
+          AWS_REGION: us-east-1
+
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+        with:
+
+          path: terraform
+
+      # - name: TF Plan
+
+      #   run: |
+
+      #     export AWS_ACCESS_KEY_ID=${{ secrets.AWS_ACCESS_KEY }}
+
+      #     export AWS_SECRET_ACCESS_KEY=${{ secrets.AWS_SECRET_ACCESS }}
+
+      #     export AWS_REGION=us-east-1
+
+      #     cd terraform
+
+      #     terraform init
+
+      #     terraform plan
