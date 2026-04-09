@@ -46,6 +46,7 @@ resource "aws_subnet" "public" {
   tags = {
     Name = "${var.project_name}-public-subnet"
   }
+  
 }
 
 resource "aws_route_table" "public" {
