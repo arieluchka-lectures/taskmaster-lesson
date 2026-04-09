@@ -1,10 +1,13 @@
-name: Terraform plan
-on:
-  pull_request:
+name: Terraform deployment
+
+on: 
+  workflow_dispatch:
+  push:
     branches:
       - main
     paths:
       - 'terraform/**'
+
 jobs:
   terraform_plan:
     name:  Terraform Plan (PR)
@@ -24,7 +27,7 @@ jobs:
         with:
           name: teraform-state
           path: terraform
-        
+          workflow: terraform_deployment.yml
       - name: terraform-init-plan
         run: |
           export AWS_ACCESS_KEY_ID=${{secrets.AWS_ACCESS_KEY_ID}}
@@ -32,6 +35,11 @@ jobs:
           export AWS_REGION=us-east-1
           cd terraform
           terraform init
-          terraform plan
+          terraform destroy --auto-approve
 
-  
+      - name: upload-artifact
+        continue-on-error: true
+        uses: actions/upload-artifact@v7
+        with:
+          name: terraform-state
+          path: terraform/terraform.tfstate
