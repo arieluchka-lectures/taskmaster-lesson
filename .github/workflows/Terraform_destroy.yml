@@ -3,8 +3,8 @@ on:
   workflow_dispatch:
 
 jobs:
-  terraform_plan:
-    name:  Terraform Plan (PR)
+  terraform_destroy:
+    name:  Terraform destroy
     runs-on: ubuntu-latest
 
     steps:
@@ -16,7 +16,7 @@ jobs:
             terraform_version: "1.14.4"
   
       - name: download-artifact
-        continue-on-error: true
+
         uses: dawidd6/action-download-artifact@v19
         with:
           name: teraform-state
