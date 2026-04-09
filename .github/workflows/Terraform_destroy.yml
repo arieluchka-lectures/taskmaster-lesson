@@ -3,7 +3,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  terraform_plan:
+  terraform_destroy:
     name:  Terraform Plan (PR)
     runs-on: ubuntu-latest
 
