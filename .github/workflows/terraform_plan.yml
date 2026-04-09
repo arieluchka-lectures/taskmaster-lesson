@@ -46,7 +46,7 @@ jobs:
 
           path: terraform
 
-          workflow: terraform_deployment.yaml
+          workflow: terraform_deployment.yml
 
       
 
